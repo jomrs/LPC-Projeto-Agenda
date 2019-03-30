@@ -1,0 +1,15 @@
+<h1>Agendas Públicas:</h2>
+<hr>
+{% for agenda in object_list %}
+    <div>
+        {% if agenda.tipo.nome == 'PUBLICAS' %}
+            <h2>{{ agenda.nome | linebreaksbr }}</h2>
+            <span>Agendado para: {{ agenda.data | linebreaksbr }}</span>
+            <ul> Compromissos:
+            {% for compromisso in agenda.compromissos.all  %}
+                <li>{{ compromisso }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endfor %}
